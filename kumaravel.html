@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Commerce Portal</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation menu */
+        .navbar {
+            background: #2d89ef;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        form {
+            background: #f5f5f5;
+            padding: 15px;
+            width: 50%;
+            border-radius: 6px;
+        }
+
+        input, textarea {
+            width: 95%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        button {
+            background: #2d89ef;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .box {
+            background: #eee;
+            padding: 10px;
+            width: 50%;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .product-box {
+            display: flex;
+        }
+
+        .product {
+            background: #dcdcdc;
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+
+    <script>
+        // Registration Validation
+        function validateRegister(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("regName").value.trim();
+            let email = document.getElementById("regEmail").value.trim();
+            let pass = document.getElementById("regPassword").value;
+            let cpass = document.getElementById("regConfirm").value;
+
+            if (pass !== cpass) {
+                document.getElementById("regError").innerHTML = "Passwords do not match!";
+                return;
+            }
+
+            if (pass.length < 6) {
+                document.getElementById("regError").innerHTML = "Password must be at least 6 characters.";
+                return;
+            }
+
+            alert("Registration Successful!");
+        }
+
+        // Login Validation
+        function validateLogin(event) {
+            event.preventDefault();
+
+            let email = document.getElementById("loginEmail").value;
+            let pass = document.getElementById("loginPassword").value;
+
+            if (email === "" || pass === "") {
+                document.getElementById("loginError").innerHTML = "All fields are required!";
+                return;
+            }
+
+            alert("Login Successful!");
+        }
+    </script>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="logo">MyShop</div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Product Items</a></li>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="home">
+    <h1>Welcome to MyShop</h1>
+    <p>Your one-stop E-Commerce shopping portal.</p>
+</section>
+
+<!-- PRODUCT ITEMS SECTION -->
+<section id="products">
+    <h2>Product Items</h2>
+
+    <div class="product-box">
+        <div class="product">Laptop – ₹45,000</div>
+        <div class="product">Headphones – ₹1,500</div>
+        <div class="product">Smartphone – ₹15,000</div>
+    </div>
+
+    <h2>User Dashboard</h2>
+
+    <h3>My Orders</h3>
+    <ul class="box">
+        <li>Order #101 – Delivered</li>
+        <li>Order #102 – Shipping</li>
+    </ul>
+
+    <h3>Wishlist</h3>
+    <ul class="box">
+        <li>iPhone 15</li>
+        <li>Wireless Earbuds</li>
+    </ul>
+
+    <h3>Comments & Reviews</h3>
+    <ul class="box">
+        <li>"Great product!" – ★★★★★</li>
+        <li>"Fast delivery." – ★★★★☆</li>
+    </ul>
+
+    <h3>Customer Care</h3>
+    <p>Call: 1800-123-456</p>
+    <p>Email: support@myshop.com</p>
+
+    <h3>Report an Issue</h3>
+    <form>
+        <textarea placeholder="Describe your issue..."></textarea><br>
+        <button>Submit</button>
+    </form>
+</section>
+
+<!-- REGISTRATION FORM -->
+<section id="register">
+    <h2>User Registration</h2>
+
+    <form onsubmit="validateRegister(event)">
+        <label>Name:</label>
+        <input type="text" id="regName" required>
+
+        <label>Email:</label>
+        <input type="email" id="regEmail" required>
+
+        <label>Password:</label>
+        <input type="password" id="regPassword" required>
+
+        <label>Confirm Password:</label>
+        <input type="password" id="regConfirm" required>
+
+        <button type="submit">Register</button>
+
+        <p id="regError" class="error"></p>
+    </form>
+</section>
+
+<!-- LOGIN FORM -->
+<section id="login">
+    <h2>User Login</h2>
+
+    <form onsubmit="validateLogin(event)">
+        <label>Email:</label>
+        <input type="email" id="loginEmail" required>
+
+        <label>Password:</label>
+        <input type="password" id="loginPassword" required>
+
+        <button type="submit">Login</button>
+
+        <p id="loginError" class="error"></p>
+    </form>
+</section>
+
+<!-- ABOUT US -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>We provide high-quality products at the best prices.</p>
+</section>
+
+<!-- CONTACT US -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@myshop.com</p>
+    <p>Phone: 1800-123-456</p>
+</section>
+
+</body>
+</html>
